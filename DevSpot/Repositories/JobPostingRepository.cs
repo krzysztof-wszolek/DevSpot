@@ -14,7 +14,7 @@ namespace DevSpot.Repositories
         public async Task AddAsync(JobPosting entity)
         {
             await _context.AddAsync(entity);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();//test delete
         }
 
         public async Task DeleteAsync(int id)
@@ -45,7 +45,7 @@ namespace DevSpot.Repositories
         {
             var jobPosting = await _context.JobPostings.FindAsync(id);
 
-            if (jobPosting != null)
+            if (jobPosting == null)
             {
                 throw new KeyNotFoundException();
 
